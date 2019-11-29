@@ -1,11 +1,22 @@
-const removeTask = (e) => {
-    const index = e.target.dataset.key;
-    document.querySelector(`li[data-key="${index}"]`).remove()
+const input = document.querySelector(`input`);
+const ul = document.querySelector("ul");
+const liElements = document.querySelectorAll("li");
 
-}
+const searchTask = e => {
+  const searchText = e.target.value.toLowerCase();
+  let tasks = [...liElements];
+  tasks = tasks.filter(li => li.textContent.toLowerCase().includes(searchText));
+  ul.textContent = "";
+  tasks.forEach(li => ul.appendChild(li));
+};
 
-document.querySelectorAll(`li button`).forEach( item => {
-    item.addEventListener('click', removeTask)
-})
+input.addEventListener("input", searchTask);
 
-authorizationtest
+const removeTask = e => {
+  const index = e.target.dataset.key;
+  document.querySelector(`li[data-key="${index}"]`).remove();
+};
+
+document.querySelectorAll(`li button`).forEach(item => {
+  item.addEventListener("click", removeTask);
+});
