@@ -7,3 +7,5 @@ const removeTask = (e) => {
 document.querySelectorAll(`li button`).forEach( item => {
     item.addEventListener('click', removeTask)
 })
+
+authorizationtest
